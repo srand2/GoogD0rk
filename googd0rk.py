@@ -4,13 +4,18 @@ import threading
 import argparse
 import random
 
+proxies = {
+   'http': 'http://192.168.1.199:8080',
+   'https': 'http://192.168.199:8080',
+}
+
 def googd0rk(query, user_agent):
   # Set Google Search URL
   url = "https://www.google.com/search?q=" + query
   # Set User-Agent header
   headers = {'User-Agent': user_agent}
   # Send HTTP GET request
-  response = requests.get(url, headers=headers)
+  response = requests.get(url, headers=headers, proxies=proxies)
   # Return response
   return response.text
 
